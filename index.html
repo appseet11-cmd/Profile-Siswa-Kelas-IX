@@ -25,7 +25,6 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:#0e7490;line-height:1.3
 @media(min-width:900px){.pr-header h1{font-size:3.2rem}}
 .pr-header h1 em{color:#a5f3fc;font-style:italic}
 .pr-header .pr-subtitle{font-size:1rem;color:rgba(255,255,255,0.92);max-width:750px;margin:0 auto 2rem}
-/* ✅ TOMBOL PETUNJUK DI HEADER */
 .pr-petunjuk-btn{display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 100%);color:#78350f;padding:0.85rem 1.6rem;border-radius:50px;font-weight:800;font-size:0.95rem;border:2px solid rgba(255,255,255,0.5);cursor:pointer;box-shadow:0 6px 20px rgba(245,158,11,0.4),inset 0 1px 0 rgba(255,255,255,0.4);transition:all 0.3s ease;font-family:inherit;letter-spacing:0.03em;text-transform:uppercase;margin-bottom:1.5rem;position:relative;overflow:hidden}
 .pr-petunjuk-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transition:left 0.6s ease}
 .pr-petunjuk-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 28px rgba(245,158,11,0.55),inset 0 1px 0 rgba(255,255,255,0.5);background:linear-gradient(135deg,#fcd34d 0%,#fbbf24 100%)}
@@ -163,12 +162,55 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:#0e7490;line-height:1.3
 .pr-confirm-actions button{flex:1;padding:0.85rem;border-radius:12px;border:none;font-family:inherit;font-weight:700;font-size:0.95rem;cursor:pointer}
 .pr-confirm-btn-no{background:#fee2e2;color:#dc2626}
 .pr-confirm-btn-yes{background:linear-gradient(135deg,#10b981 0%,#059669 100%);color:white}
-/* ✅ MODAL PETUNJUK PENGISIAN */
+
+/* ✅ MODAL HASIL KIRIM BARU */
+.pr-success-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.82);display:none;align-items:center;justify-content:center;z-index:10002;padding:1rem;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.pr-success-overlay.show{display:flex;animation:fadeIn 0.3s ease}
+.pr-success-modal{background:#fff;border-radius:24px;width:100%;max-width:560px;max-height:92vh;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4);display:flex;flex-direction:column;animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1)}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.pr-success-header{background:linear-gradient(135deg,#10b981 0%,#059669 50%,#047857 100%);color:white;padding:1.8rem 1.5rem 1.5rem;position:relative;overflow:hidden;text-align:center}
+.pr-success-header::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 80% 20%,rgba(255,255,255,0.25) 0%,transparent 50%)}
+.pr-success-header::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:30px 30px}
+.pr-success-icon{width:80px;height:80px;margin:0 auto 0.8rem;background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;z-index:1;animation:bounceIn 0.6s cubic-bezier(0.68,-0.55,0.27,1.55)}
+@keyframes bounceIn{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.pr-success-header h3{color:white;font-size:1.4rem;font-weight:800;margin-bottom:0.3rem;position:relative;z-index:1;letter-spacing:0.02em}
+.pr-success-header p{font-size:0.88rem;color:rgba(255,255,255,0.95);position:relative;z-index:1;font-weight:500}
+.pr-success-body{padding:1.3rem 1.5rem;overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1}
+.pr-success-info-card{background:linear-gradient(135deg,#f0fdfa 0%,#e0f2fe 100%);border:2px solid #a5f3fc;border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.2rem}
+.pr-success-info-row{display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0;font-size:0.88rem;gap:0.8rem}
+.pr-success-info-row:not(:last-child){border-bottom:1px dashed #a5f3fc}
+.pr-success-info-row .info-label{color:#0e7490;font-weight:700;font-size:0.8rem;flex-shrink:0}
+.pr-success-info-row .info-value{color:#1e293b;font-weight:600;text-align:right;word-break:break-word;flex:1}
+.pr-success-links-title{font-size:0.9rem;font-weight:800;color:#0e7490;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem;padding-left:0.3rem}
+.pr-success-links-title::before{content:'';width:4px;height:18px;background:linear-gradient(180deg,#0e7490,#06b6d4);border-radius:2px}
+.pr-success-link-btn{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;border-radius:14px;text-decoration:none;margin-bottom:0.8rem;transition:all 0.3s ease;position:relative;overflow:hidden;border:2px solid transparent;cursor:pointer;font-family:inherit;text-align:left;width:100%}
+.pr-success-link-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s ease}
+.pr-success-link-btn:hover::before{left:100%}
+.pr-success-link-btn.pdf-btn{background:linear-gradient(135deg,#dc2626 0%,#ef4444 100%);color:white;box-shadow:0 6px 18px rgba(220,38,38,0.3)}
+.pr-success-link-btn.pdf-btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(220,38,38,0.45);border-color:#fca5a5}
+.pr-success-link-btn.photo-btn{background:linear-gradient(135deg,#0e7490 0%,#06b6d4 100%);color:white;box-shadow:0 6px 18px rgba(14,116,144,0.3)}
+.pr-success-link-btn.photo-btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(14,116,144,0.45);border-color:#a5f3fc}
+.pr-success-link-btn .link-icon{width:48px;height:48px;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.35);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.pr-success-link-btn .link-content{flex:1;min-width:0}
+.pr-success-link-btn .link-title{font-size:0.95rem;font-weight:800;margin-bottom:0.15rem;display:flex;align-items:center;gap:0.4rem}
+.pr-success-link-btn .link-desc{font-size:0.78rem;color:rgba(255,255,255,0.9);font-weight:500}
+.pr-success-link-btn .link-arrow{font-size:1.4rem;flex-shrink:0;transition:transform 0.3s ease}
+.pr-success-link-btn:hover .link-arrow{transform:translateX(4px)}
+.pr-success-link-btn.disabled{background:#e2e8f0;color:#94a3b8;cursor:not-allowed;box-shadow:none}
+.pr-success-link-btn.disabled:hover{transform:none}
+.pr-success-link-btn.disabled .link-icon{background:rgba(148,163,184,0.2);border-color:rgba(148,163,184,0.3)}
+.pr-success-note{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border-left:4px solid #f59e0b;padding:0.8rem 1rem;border-radius:10px;font-size:0.82rem;color:#78350f;font-weight:600;display:flex;gap:0.6rem;align-items:flex-start;margin-top:0.5rem}
+.pr-success-footer{padding:1rem 1.5rem;background:#f8fafc;border-top:1px solid #e2e8f0;display:flex;gap:0.6rem;justify-content:flex-end;flex-wrap:wrap;flex-shrink:0}
+.pr-success-btn{padding:0.8rem 1.5rem;border-radius:100px;border:none;font-family:inherit;font-weight:700;font-size:0.9rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.2s ease}
+.pr-success-btn-primary{background:linear-gradient(135deg,#0e7490 0%,#06b6d4 100%);color:white;box-shadow:0 4px 12px rgba(14,116,144,0.25)}
+.pr-success-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(14,116,144,0.35)}
+.pr-success-btn-secondary{background:#f1f5f9;color:#475569}
+.pr-success-btn-secondary:hover{background:#e2e8f0}
+
 .pr-petunjuk-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.78);display:none;align-items:center;justify-content:center;z-index:9996;padding:1rem;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .pr-petunjuk-overlay.show{display:flex;animation:fadeIn 0.3s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .pr-petunjuk-modal{background:#fff;border-radius:24px;width:100%;max-width:720px;max-height:90vh;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.35);display:flex;flex-direction:column;animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1)}
-@keyframes slideUp{from{opacity:0;transform:translateY(30px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 .pr-petunjuk-header{background:linear-gradient(135deg,#f59e0b 0%,#f97316 50%,#ea580c 100%);color:white;padding:1.5rem 1.5rem 1.3rem;position:relative;overflow:hidden}
 .pr-petunjuk-header::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 80% 20%,rgba(255,255,255,0.2) 0%,transparent 50%)}
 .pr-petunjuk-header-content{position:relative;z-index:1;display:flex;align-items:center;gap:1rem}
@@ -199,9 +241,6 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:#0e7490;line-height:1.3
 .pr-petunjuk-list .step-text{flex:1}
 .pr-petunjuk-list .step-text strong{color:#0e7490;font-weight:700}
 .pr-petunjuk-list .step-text .highlight{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);color:#78350f;padding:0.1rem 0.5rem;border-radius:5px;font-weight:700;font-size:0.82rem;border:1px solid #fcd34d;display:inline-block;margin:0.15rem 0}
-.pr-petunjuk-list .sub-list{margin:0.5rem 0 0.3rem 0;padding-left:0.3rem}
-.pr-petunjuk-list .sub-list li{padding:0.35rem 0;font-size:0.84rem;border-top:none !important}
-.pr-petunjuk-list .sub-list .step-num{min-width:22px;height:22px;font-size:0.7rem}
 .pr-petunjuk-warning{background:linear-gradient(135deg,#fee2e2 0%,#fecaca 100%);border-left:4px solid #dc2626;padding:0.8rem 1rem;border-radius:10px;margin-top:0.8rem;font-size:0.84rem;color:#7f1d1d;font-weight:600;display:flex;gap:0.6rem;align-items:flex-start}
 .pr-petunjuk-success{background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);border-left:4px solid #10b981;padding:0.8rem 1rem;border-radius:10px;margin-top:0.8rem;font-size:0.84rem;color:#065f46;font-weight:600;display:flex;gap:0.6rem;align-items:flex-start}
 .pr-petunjuk-footer{padding:1rem 1.5rem;background:#f8fafc;border-top:1px solid #e2e8f0;display:flex;gap:0.6rem;justify-content:flex-end;flex-wrap:wrap;flex-shrink:0}
@@ -255,7 +294,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:#0e7490;line-height:1.3
 .guru-bk9-result-actions{display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap}
 .guru-bk9-result-actions .guru-bk9-btn{flex:1;min-width:140px;padding:0.75rem;font-size:0.88rem}
 .guru-bk9-btn-pdf{background:linear-gradient(135deg,#dc2626 0%,#ef4444 100%);color:white}
-.pdf-viewer-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.92);display:none;align-items:center;justify-content:center;z-index:10001;padding:0.5rem}
+.pdf-viewer-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.92);display:none;align-items:center;justify-content:center;z-index:10003;padding:0.5rem}
 .pdf-viewer-overlay.show{display:flex}
 .pdf-viewer-container{background:#fff;border-radius:16px;width:100%;max-width:900px;height:95vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.5)}
 .pdf-viewer-header{background:linear-gradient(135deg,#dc2626 0%,#ef4444 100%);color:white;padding:0.8rem 1rem;display:flex;align-items:center;gap:1rem;flex-shrink:0;flex-wrap:wrap}
@@ -288,6 +327,7 @@ body { background: white !important; }
 .pr-toast,
 .pr-confirm-overlay,
 .pr-petunjuk-overlay,
+.pr-success-overlay,
 .guru-bk9-modal,
 .pdf-viewer-overlay,
 .pr-photo-section,
@@ -324,6 +364,30 @@ padding: 0.3rem 0.5rem !important;
 background: white !important;
 }
 }
+/* ✅ MODAL CETAK PDF BERDASARKAN NIS */
+.pr-cetak-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.78);display:none;align-items:center;justify-content:center;z-index:9995;padding:1rem;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.pr-cetak-overlay.show{display:flex;animation:fadeIn 0.3s ease}
+.pr-cetak-modal{background:#fff;border-radius:24px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.35);animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1)}
+.pr-cetak-header{background:linear-gradient(135deg,#dc2626 0%,#ef4444 50%,#f87171 100%);color:white;padding:1.5rem;text-align:center;position:relative;overflow:hidden}
+.pr-cetak-header::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 80% 20%,rgba(255,255,255,0.2) 0%,transparent 50%)}
+.pr-cetak-header .cetak-icon{width:64px;height:64px;margin:0 auto 0.8rem;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;position:relative;z-index:1}
+.pr-cetak-header h3{color:white;font-size:1.25rem;font-weight:800;margin-bottom:0.3rem;position:relative;z-index:1}
+.pr-cetak-header p{font-size:0.88rem;color:rgba(255,255,255,0.92);position:relative;z-index:1}
+.pr-cetak-body{padding:1.5rem}
+.pr-cetak-info{background:linear-gradient(135deg,#fef2f2 0%,#fee2e2 100%);border-left:4px solid #dc2626;padding:0.8rem 1rem;border-radius:10px;margin-bottom:1.2rem;font-size:0.85rem;color:#7f1d1d;font-weight:600;display:flex;gap:0.6rem;align-items:flex-start}
+.pr-cetak-input-wrap{position:relative;margin-bottom:1rem}
+.pr-cetak-input-wrap .cetak-input-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.2rem;color:#dc2626}
+.pr-cetak-input{width:100%;padding:0.9rem 1rem 0.9rem 3rem;border:2px solid #fecaca;border-radius:12px;font-family:inherit;font-size:16px;transition:all 0.2s ease;background:white;-webkit-appearance:none;appearance:none}
+.pr-cetak-input:focus{outline:none;border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,0.15)}
+.pr-cetak-error{background:#fee2e2;border:1px solid #fecaca;border-left:4px solid #ef4444;color:#991b1b;padding:0.7rem 1rem;border-radius:8px;font-size:0.85rem;margin-bottom:1rem;display:none}
+.pr-cetak-error.show{display:block}
+.pr-cetak-actions{display:flex;gap:0.6rem;margin-top:1rem}
+.pr-cetak-btn{flex:1;padding:0.85rem;border-radius:12px;border:none;font-family:inherit;font-weight:700;font-size:0.95rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.2s ease}
+.pr-cetak-btn-primary{background:linear-gradient(135deg,#dc2626 0%,#ef4444 100%);color:white;box-shadow:0 4px 12px rgba(220,38,38,0.25)}
+.pr-cetak-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(220,38,38,0.35)}
+.pr-cetak-btn-primary:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.pr-cetak-btn-secondary{background:#f1f5f9;color:#475569}
+.pr-cetak-btn-secondary:hover{background:#e2e8f0}
 </style>
 </head>
 <body>
@@ -340,13 +404,93 @@ background: white !important;
 </div>
 </div>
 </div>
+
+<!-- ✅ MODAL HASIL KIRIM SUKSES -->
+<div class="pr-success-overlay" id="prSuccessOverlay">
+<div class="pr-success-modal">
+<div class="pr-success-header">
+<div class="pr-success-icon">✅</div>
+<h3>DATA BERHASIL DIKIRIM!</h3>
+<p>Laporan PDF & Foto telah tersimpan di sistem</p>
+</div>
+<div class="pr-success-body">
+<div class="pr-success-info-card">
+<div class="pr-success-info-row">
+<span class="info-label">👤 Nama Siswa</span>
+<span class="info-value" id="successNama">-</span>
+</div>
+<div class="pr-success-info-row">
+<span class="info-label">🔢 NISN</span>
+<span class="info-value" id="successNisn">-</span>
+</div>
+<div class="pr-success-info-row">
+<span class="info-label">🏫 Kelas</span>
+<span class="info-value" id="successKelas">-</span>
+</div>
+<div class="pr-success-info-row">
+<span class="info-label">📋 Record ID</span>
+<span class="info-value" id="successRecordId">-</span>
+</div>
+</div>
+<div class="pr-success-links-title">📎 Akses Dokumen Anda</div>
+<button type="button" class="pr-success-link-btn pdf-btn" id="successPdfBtn" onclick="handleSuccessPdfClick()">
+<div class="link-icon">📄</div>
+<div class="link-content">
+<div class="link-title">Lihat Laporan PDF <span>→</span></div>
+<div class="link-desc">Klik untuk membuka dokumen PDF Profile Siswa</div>
+</div>
+<div class="link-arrow">🔗</div>
+</button>
+<button type="button" class="pr-success-link-btn photo-btn" id="successPhotoBtn" onclick="handleSuccessPhotoClick()">
+<div class="link-icon">📸</div>
+<div class="link-content">
+<div class="link-title">Lihat Foto Siswa <span>→</span></div>
+<div class="link-desc">Klik untuk membuka pas foto yang diupload</div>
+</div>
+<div class="link-arrow">🔗</div>
+</button>
+<div class="pr-success-note">
+<span style="font-size:1.2rem">💡</span>
+<div><strong>Tips:</strong> Klik tombol di atas untuk melihat dokumen. Anda juga bisa menyimpan link ini untuk akses di kemudian hari melalui menu <strong>Guru BK9</strong>.</div>
+</div>
+</div>
+<div class="pr-success-footer">
+<button type="button" class="pr-success-btn pr-success-btn-secondary" onclick="closeSuccessResult()">❌ Tutup</button>
+<button type="button" class="pr-success-btn pr-success-btn-primary" onclick="finishAndReset()">🎉 Selesai</button>
+</div>
+</div>
+</div>
+<!-- ✅ MODAL CETAK PDF BERDASARKAN NIS -->
+<div class="pr-cetak-overlay" id="prCetakOverlay">
+<div class="pr-cetak-modal">
+<div class="pr-cetak-header">
+<div class="cetak-icon">🖨️</div>
+<h3>CETAK LAPORAN PDF</h3>
+<p>Masukkan NIS siswa untuk membuka laporan PDF</p>
+</div>
+<div class="pr-cetak-body">
+<div class="pr-cetak-info">
+<span style="font-size:1.2rem">💡</span>
+<div><strong>Petunjuk:</strong> Masukkan NIS siswa yang sudah pernah mengirim data. Sistem akan membuka laporan PDF yang tersimpan di Google Drive.</div>
+</div>
+<div class="pr-cetak-input-wrap">
+<span class="cetak-input-icon">🆔</span>
+<input type="text" class="pr-cetak-input" id="cetakNisInput" placeholder="Masukkan NIS siswa (contoh: 2026001)" autocomplete="off" inputmode="numeric">
+</div>
+<div class="pr-cetak-error" id="cetakError">❌ Data tidak ditemukan.</div>
+<div class="pr-cetak-actions">
+<button type="button" class="pr-cetak-btn pr-cetak-btn-secondary" onclick="closeCetakModal()">❌ Batal</button>
+<button type="button" class="pr-cetak-btn pr-cetak-btn-primary" id="cetakSearchBtn" onclick="cariDanCetakPDF()">🔍 Cari & Buka PDF</button>
+</div>
+</div>
+</div>
+</div>
 <div class="pr-loading-overlay" id="pr-loading">
 <div class="pr-spinner"></div>
 <div class="pr-loading-text" id="pr-loading-text">Mengirim data...</div>
 <div class="pr-loading-sub">Mohon tunggu, jangan tutup halaman ini</div>
 </div>
 <div class="pr-toast" id="pr-toast"></div>
-<!-- ✅ MODAL PETUNJUK PENGISIAN -->
 <div class="pr-petunjuk-overlay" id="prPetunjukOverlay">
 <div class="pr-petunjuk-modal">
 <div class="pr-petunjuk-header">
@@ -363,8 +507,6 @@ background: white !important;
 <div class="pr-petunjuk-intro">
 💡 <strong>Halo Siswa Hebat!</strong> Ikuti langkah-langkah berikut ini agar data profile kamu tersimpan dengan benar dan lengkap.
 </div>
-
-<!-- BAGIAN A -->
 <div class="pr-petunjuk-section">
 <div class="pr-petunjuk-section-header">
 <div class="pr-petunjuk-section-letter">A</div>
@@ -372,23 +514,12 @@ background: white !important;
 </div>
 <div class="pr-petunjuk-section-body">
 <ul class="pr-petunjuk-list">
-<li>
-<span class="step-num">1</span>
-<div class="step-text">Isi dengan <strong>jujur</strong> semua bagian dari <span class="highlight">Langkah 1 sampai Langkah 11</span>.</div>
-</li>
-<li>
-<span class="step-num">2</span>
-<div class="step-text">Klik tombol <span class="highlight">Selanjutnya ➡️</span> untuk berpindah ke langkah berikutnya.</div>
-</li>
-<li>
-<span class="step-num">3</span>
-<div class="step-text">Pastikan setiap field bertanda <strong style="color:#ef4444">*</strong> (wajib) sudah terisi.</div>
-</li>
+<li><span class="step-num">1</span><div class="step-text">Isi dengan <strong>jujur</strong> semua bagian dari <span class="highlight">Langkah 1 sampai Langkah 11</span>.</div></li>
+<li><span class="step-num">2</span><div class="step-text">Klik tombol <span class="highlight">Selanjutnya ➡️</span> untuk berpindah ke langkah berikutnya.</div></li>
+<li><span class="step-num">3</span><div class="step-text">Pastikan setiap field bertanda <strong style="color:#ef4444">*</strong> (wajib) sudah terisi.</div></li>
 </ul>
 </div>
 </div>
-
-<!-- BAGIAN B -->
 <div class="pr-petunjuk-section">
 <div class="pr-petunjuk-section-header section-b">
 <div class="pr-petunjuk-section-letter">B</div>
@@ -396,27 +527,13 @@ background: white !important;
 </div>
 <div class="pr-petunjuk-section-body">
 <ul class="pr-petunjuk-list">
-<li>
-<span class="step-num purple">1</span>
-<div class="step-text"><strong>Centang kotak</strong> di samping tulisan:<br><span class="highlight">✅ Saya menyatakan seluruh data yang saya isi adalah BENAR dan JUJUR. *</span></div>
-</li>
-<li>
-<span class="step-num purple">2</span>
-<div class="step-text"><strong>Isi Nama Orang Tua / Wali</strong> pada kolom yang tersedia.</div>
-</li>
-<li>
-<span class="step-num purple">3</span>
-<div class="step-text"><strong>Pilih Hubungan</strong> dengan siswa (Ayah/Ibu/Wali/dll) pada dropdown.</div>
-</li>
-<li>
-<span class="step-num purple">4</span>
-<div class="step-text"><strong>TTD Orang Tua</strong> — bubuhkan tanda tangan digital pada kotak TTD Orang Tua/Wali (gunakan mouse/jari).</div>
-</li>
+<li><span class="step-num purple">1</span><div class="step-text"><strong>Centang kotak</strong> di samping tulisan:<br><span class="highlight">✅ Saya menyatakan seluruh data yang saya isi adalah BENAR dan JUJUR. *</span></div></li>
+<li><span class="step-num purple">2</span><div class="step-text"><strong>Isi Nama Orang Tua / Wali</strong> pada kolom yang tersedia.</div></li>
+<li><span class="step-num purple">3</span><div class="step-text"><strong>Pilih Hubungan</strong> dengan siswa (Ayah/Ibu/Wali/dll) pada dropdown.</div></li>
+<li><span class="step-num purple">4</span><div class="step-text"><strong>TTD Orang Tua</strong> — bubuhkan tanda tangan digital pada kotak TTD Orang Tua/Wali (gunakan mouse/jari).</div></li>
 </ul>
 </div>
 </div>
-
-<!-- BAGIAN C -->
 <div class="pr-petunjuk-section">
 <div class="pr-petunjuk-section-header section-c">
 <div class="pr-petunjuk-section-letter">C</div>
@@ -424,18 +541,10 @@ background: white !important;
 </div>
 <div class="pr-petunjuk-section-body">
 <ul class="pr-petunjuk-list">
-<li>
-<span class="step-num green">1</span>
-<div class="step-text">Klik tombol <span class="highlight">💾 Simpan Lokal</span> (di bagian bawah halaman) sebagai backup data di browser kamu.</div>
-</li>
-<li>
-<span class="step-num green">2</span>
-<div class="step-text">Klik tombol <span class="highlight">📤 Kirim & Simpan Data + Generate PDF</span> (di bagian bawah Langkah 12).</div>
-</li>
-<li>
-<span class="step-num green">3</span>
-<div class="step-text"><strong>Tunggu sejenak</strong> sampai muncul informasi bahwa data <strong>benar-benar terkirim</strong> (muncul notifikasi sukses ✅).</div>
-</li>
+<li><span class="step-num green">1</span><div class="step-text">Klik tombol <span class="highlight">💾 Simpan Lokal</span> (di bagian bawah halaman) sebagai backup data di browser kamu.</div></li>
+<li><span class="step-num green">2</span><div class="step-text">Klik tombol <span class="highlight">📤 Kirim & Simpan Data + Generate PDF</span> (di bagian bawah Langkah 12).</div></li>
+<li><span class="step-num green">3</span><div class="step-text">Pilih <span class="highlight">YES</span> pada dialog konfirmasi, lalu tunggu hingga muncul <strong>modal hasil kirim</strong> berisi link PDF & Foto.</div></li>
+<li><span class="step-num green">4</span><div class="step-text"><strong>Klik tombol link</strong> untuk langsung melihat dokumen PDF atau Foto Anda.</div></li>
 </ul>
 <div class="pr-petunjuk-success">
 <span style="font-size:1.2rem">✅</span>
@@ -443,8 +552,6 @@ background: white !important;
 </div>
 </div>
 </div>
-
-<!-- BAGIAN D -->
 <div class="pr-petunjuk-section">
 <div class="pr-petunjuk-section-header section-d">
 <div class="pr-petunjuk-section-letter">D</div>
@@ -452,18 +559,9 @@ background: white !important;
 </div>
 <div class="pr-petunjuk-section-body">
 <ul class="pr-petunjuk-list">
-<li>
-<span class="step-num red">1</span>
-<div class="step-text">Klik tombol <span class="highlight">📂 Muat Data</span> (di bagian bawah halaman) untuk memuat kembali data yang sudah kamu isi.</div>
-</li>
-<li>
-<span class="step-num red">2</span>
-<div class="step-text">Klik tombol <span class="highlight">Selanjutnya ➡️</span> berulang kali sampai tiba di <strong>Langkah 12</strong>.</div>
-</li>
-<li>
-<span class="step-num red">3</span>
-<div class="step-text">Klik kembali tombol <span class="highlight">📤 Kirim & Simpan Data + Generate PDF</span>.</div>
-</li>
+<li><span class="step-num red">1</span><div class="step-text">Klik tombol <span class="highlight">📂 Muat Data</span> (di bagian bawah halaman) untuk memuat kembali data yang sudah kamu isi.</div></li>
+<li><span class="step-num red">2</span><div class="step-text">Klik tombol <span class="highlight">Selanjutnya ➡️</span> berulang kali sampai tiba di <strong>Langkah 12</strong>.</div></li>
+<li><span class="step-num red">3</span><div class="step-text">Klik kembali tombol <span class="highlight">📤 Kirim & Simpan Data + Generate PDF</span>.</div></li>
 </ul>
 <div class="pr-petunjuk-warning">
 <span style="font-size:1.2rem">🙏</span>
@@ -471,7 +569,6 @@ background: white !important;
 </div>
 </div>
 </div>
-
 </div>
 <div class="pr-petunjuk-footer">
 <button type="button" class="pr-petunjuk-btn pr-petunjuk-btn-secondary" onclick="closePetunjuk()">❌ Tutup</button>
@@ -484,7 +581,6 @@ background: white !important;
 <span class="pr-badge">Data Diri • Kelas IX • Tahun Ajaran 2026/2027</span>
 <h1>Profile <em>Siswa Kelas IX</em></h1>
 <p class="pr-subtitle">Formulir data diri siswa kelas IX yang lengkap untuk membantu Guru BK9 dalam memberikan pendampingan personal, pemetaan kebutuhan belajar, dan perencanaan layanan Bimbingan Konseling yang tepat sasaran.</p>
-<!-- ✅ TOMBOL PETUNJUK PENGISIAN -->
 <button type="button" class="pr-petunjuk-btn" onclick="openPetunjuk()">
 <span class="btn-icon">📖</span>
 <span>PETUNJUK PENGISIAN</span>
@@ -531,7 +627,6 @@ background: white !important;
 </div>
 </div>
 <form id="profileForm" oninput="updateProfileProgress()">
-<!-- STEP 1 -->
 <div class="pr-section active-step" data-step="1">
 <span class="pr-step-counter">📍 Langkah 1 dari 12</span>
 <div class="pr-section-header"><div class="pr-section-icon">📸</div><div><div class="pr-section-title">Foto & Identitas Dasar</div><div class="pr-section-subtitle">Data pokok siswa sebagai identitas resmi</div></div></div>
@@ -552,32 +647,21 @@ background: white !important;
 </div>
 <div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><div class="pr-nav-spacer"></div><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div>
 </div>
-<!-- STEP 2 -->
 <div class="pr-section" data-step="2"><span class="pr-step-counter">📍 Langkah 2 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">👤</div><div><div class="pr-section-title">Data Pribadi Lengkap</div><div class="pr-section-subtitle">Informasi demografis dan biometrik siswa</div></div></div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Tempat Lahir <span class="required">*</span></label><input type="text" class="pr-form-input" name="tempat_lahir" required></div><div class="pr-form-group"><label class="pr-form-label">Tanggal Lahir <span class="required">*</span></label><input type="date" class="pr-form-input" name="tanggal_lahir" required></div><div class="pr-form-group"><label class="pr-form-label">Jenis Kelamin <span class="required">*</span></label><select class="pr-form-select" name="jenis_kelamin" required><option value="">-- Pilih --</option><option>Laki-laki</option><option>Perempuan</option></select></div><div class="pr-form-group"><label class="pr-form-label">Agama <span class="required">*</span></label><select class="pr-form-select" name="agama" required><option value="">-- Pilih --</option><option>Islam</option><option>Kristen Protestan</option><option>Katolik</option><option>Hindu</option><option>Buddha</option><option>Konghucu</option></select></div><div class="pr-form-group"><label class="pr-form-label">Kewarganegaraan</label><input type="text" class="pr-form-input" name="kewarganegaraan" value="Indonesia"></div><div class="pr-form-group"><label class="pr-form-label">Golongan Darah</label><select class="pr-form-select" name="gol_darah"><option value="">-- Pilih --</option><option>A</option><option>B</option><option>AB</option><option>O</option><option>Tidak Tahu</option></select></div><div class="pr-form-group"><label class="pr-form-label">Anak Ke-</label><input type="number" class="pr-form-input" name="anak_ke" min="1" max="15" inputmode="numeric"></div><div class="pr-form-group"><label class="pr-form-label">Jumlah Saudara</label><input type="number" class="pr-form-input" name="jumlah_saudara" min="0" max="15" inputmode="numeric"></div><div class="pr-form-group"><label class="pr-form-label">Status dalam Keluarga</label><select class="pr-form-select" name="status_keluarga"><option value="">-- Pilih --</option><option>Kandung</option><option>Tiri</option><option>Angkat</option><option>Yatim</option><option>Piatu</option><option>Yatim Piatu</option></select></div><div class="pr-form-group"><label class="pr-form-label">Tinggal Bersama <span class="required">*</span></label><select class="pr-form-select" name="tinggal_bersama" required><option value="">-- Pilih --</option><option value="Ayah & Ibu">Ayah & Ibu</option><option value="Ayah">Ayah</option><option value="Ibu">Ibu</option><option value="Paman">Paman</option><option value="Tante">Tante</option><option value="Kakak Kandung">Kakak Kandung</option><option value="Asrama">Asrama</option><option value="Panti Asuhan">Panti Asuhan</option></select></div><div class="pr-form-group"><label class="pr-form-label">Bahasa di Rumah</label><input type="text" class="pr-form-input" name="bahasa_rumah"></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 3 -->
 <div class="pr-section" data-step="3"><span class="pr-step-counter">📍 Langkah 3 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">🏥</div><div><div class="pr-section-title">Data Fisik & Kesehatan</div><div class="pr-section-subtitle">Informasi kesehatan dan kondisi fisik siswa</div></div></div><div class="pr-form-grid-3"><div class="pr-form-group"><label class="pr-form-label">Berat Badan (kg)</label><input type="number" class="pr-form-input" name="berat_badan" step="0.1" inputmode="decimal"></div><div class="pr-form-group"><label class="pr-form-label">Tinggi Badan (cm)</label><input type="number" class="pr-form-input" name="tinggi_badan" step="0.1" inputmode="decimal"></div><div class="pr-form-group"><label class="pr-form-label">Lingkar Kepala (cm)</label><input type="number" class="pr-form-input" name="lingkar_kepala" inputmode="numeric"></div></div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Riwayat Penyakit</label><select class="pr-form-select" name="riwayat_penyakit"><option value="">-- Pilih --</option><option>Tidak Ada</option><option>Asma</option><option>Alergi</option><option>Diabetes</option><option>Jantung</option><option>Epilepsi</option><option>Lainnya</option></select></div><div class="pr-form-group"><label class="pr-form-label">Kelainan Fisik</label><input type="text" class="pr-form-input" name="kelainan_fisik"></div><div class="pr-form-group full"><label class="pr-form-label">Keterangan Kesehatan Tambahan</label><textarea class="pr-form-textarea" name="ket_kesehatan"></textarea></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 4 -->
 <div class="pr-section" data-step="4"><span class="pr-step-counter">📍 Langkah 4 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">🏠</div><div><div class="pr-section-title">Alamat Tempat Tinggal & Kontak</div><div class="pr-section-subtitle">Informasi domisili dan cara menghubungi siswa</div></div></div><div class="pr-form-grid"><div class="pr-form-group full"><label class="pr-form-label">Alamat Lengkap <span class="required">*</span></label><input type="text" class="pr-form-input" name="alamat" required autocomplete="street-address"></div><div class="pr-form-group"><label class="pr-form-label">RT / RW</label><input type="text" class="pr-form-input" name="rt_rw"></div><div class="pr-form-group"><label class="pr-form-label">Kelurahan / Desa</label><input type="text" class="pr-form-input" name="kelurahan"></div><div class="pr-form-group"><label class="pr-form-label">Kecamatan</label><input type="text" class="pr-form-input" name="kecamatan"></div><div class="pr-form-group"><label class="pr-form-label">Kota / Kabupaten</label><input type="text" class="pr-form-input" name="kota" autocomplete="address-level2"></div><div class="pr-form-group"><label class="pr-form-label">Kode Pos</label><input type="text" class="pr-form-input" name="kode_pos" maxlength="5" inputmode="numeric" autocomplete="postal-code"></div><div class="pr-form-group"><label class="pr-form-label">Jarak Rumah ke Sekolah</label><select class="pr-form-select" name="jarak_rumah"><option value="">-- Pilih --</option><option>&lt; 1 km</option><option>1 - 5 km</option><option>5 - 10 km</option><option>&gt; 10 km</option></select></div><div class="pr-form-group"><label class="pr-form-label">Transportasi ke Sekolah</label><select class="pr-form-select" name="transportasi"><option value="">-- Pilih --</option><option>Jalan Kaki</option><option>Sepeda</option><option>Angkot/Bus</option><option>Motor (Diantar)</option><option>Mobil Pribadi</option><option>Ojek Online</option><option>Lainnya</option></select></div><div class="pr-form-group"><label class="pr-form-label">No. HP Siswa <span class="required">*</span></label><input type="tel" class="pr-form-input" name="hp_siswa" required inputmode="tel" autocomplete="tel"></div><div class="pr-form-group"><label class="pr-form-label">Email Siswa</label><input type="email" class="pr-form-input" name="email_siswa" inputmode="email" autocomplete="email"></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 5 -->
 <div class="pr-section" data-step="5"><span class="pr-step-counter">📍 Langkah 5 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">👨‍👩‍👧</div><div><div class="pr-section-title">Data Orang Tua / Wali</div><div class="pr-section-subtitle">Informasi lengkap orang tua atau wali siswa</div></div></div><div class="pr-subsection-title">👨 Data Ayah</div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Nama Ayah</label><input type="text" class="pr-form-input" name="nama_ayah"></div><div class="pr-form-group"><label class="pr-form-label">Tempat Lahir Ayah</label><input type="text" class="pr-form-input" name="ttl_ayah"></div><div class="pr-form-group"><label class="pr-form-label">Pendidikan Terakhir Ayah</label><select class="pr-form-select" name="pendidikan_ayah"><option value="">-- Pilih --</option><option>Tidak Sekolah</option><option>SD</option><option>SMP</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2</option><option>S3</option></select></div><div class="pr-form-group"><label class="pr-form-label">Pekerjaan Ayah</label><input type="text" class="pr-form-input" name="pekerjaan_ayah"></div><div class="pr-form-group"><label class="pr-form-label">Penghasilan Ayah</label><select class="pr-form-select" name="penghasilan_ayah"><option value="">-- Pilih --</option><option>&lt; Rp 1.000.000</option><option>Rp 1.000.000 - 3.000.000</option><option>Rp 3.000.000 - 5.000.000</option><option>Rp 5.000.000 - 10.000.000</option><option>&gt; Rp 10.000.000</option></select></div><div class="pr-form-group"><label class="pr-form-label">No. HP Ayah</label><input type="tel" class="pr-form-input" name="hp_ayah" inputmode="tel"></div></div><div class="pr-divider"></div><div class="pr-subsection-title">👩 Data Ibu</div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Nama Ibu</label><input type="text" class="pr-form-input" name="nama_ibu"></div><div class="pr-form-group"><label class="pr-form-label">Tempat Lahir Ibu</label><input type="text" class="pr-form-input" name="ttl_ibu"></div><div class="pr-form-group"><label class="pr-form-label">Pendidikan Terakhir Ibu</label><select class="pr-form-select" name="pendidikan_ibu"><option value="">-- Pilih --</option><option>Tidak Sekolah</option><option>SD</option><option>SMP</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2</option><option>S3</option></select></div><div class="pr-form-group"><label class="pr-form-label">Pekerjaan Ibu</label><input type="text" class="pr-form-input" name="pekerjaan_ibu"></div><div class="pr-form-group"><label class="pr-form-label">Penghasilan Ibu</label><select class="pr-form-select" name="penghasilan_ibu"><option value="">-- Pilih --</option><option>Tidak Ada</option><option>&lt; Rp 1.000.000</option><option>Rp 1.000.000 - 3.000.000</option><option>Rp 3.000.000 - 5.000.000</option><option>&gt; Rp 5.000.000</option></select></div><div class="pr-form-group"><label class="pr-form-label">No. HP Ibu</label><input type="tel" class="pr-form-input" name="hp_ibu" inputmode="tel"></div></div><div class="pr-divider"></div><div class="pr-subsection-title">👤 Data Wali (Jika Berbeda)</div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Nama Wali</label><input type="text" class="pr-form-input" name="nama_wali"></div><div class="pr-form-group"><label class="pr-form-label">Hubungan dengan Siswa</label><input type="text" class="pr-form-input" name="hubungan_wali"></div><div class="pr-form-group"><label class="pr-form-label">Pekerjaan Wali</label><input type="text" class="pr-form-input" name="pekerjaan_wali"></div><div class="pr-form-group"><label class="pr-form-label">No. HP Wali</label><input type="tel" class="pr-form-input" name="hp_wali" inputmode="tel"></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 6 -->
 <div class="pr-section" data-step="6"><span class="pr-step-counter">📍 Langkah 6 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">🎓</div><div><div class="pr-section-title">Data Akademik & Asal Sekolah</div><div class="pr-section-subtitle">Riwayat pendidikan dan prestasi akademik</div></div></div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Asal SD/MI <span class="required">*</span></label><input type="text" class="pr-form-input" name="asal_sd" required></div><div class="pr-form-group"><label class="pr-form-label">NPSN Asal SD</label><input type="text" class="pr-form-input" name="npsn_sd" maxlength="8" inputmode="numeric"></div><div class="pr-form-group"><label class="pr-form-label">Alamat Asal SD</label><input type="text" class="pr-form-input" name="alamat_sd"></div><div class="pr-form-group"><label class="pr-form-label">Tahun Lulus SD</label><input type="number" class="pr-form-input" name="tahun_lulus_sd" min="2000" max="2030" inputmode="numeric"></div><div class="pr-form-group"><label class="pr-form-label">Nilai Rata-rata Rapor SD</label><input type="number" class="pr-form-input" name="nilai_rapor_sd" step="0.01" min="0" max="100" inputmode="decimal"></div><div class="pr-form-group"><label class="pr-form-label">Nilai AKM</label><input type="text" class="pr-form-input" name="nilai_akm"></div><div class="pr-form-group full"><label class="pr-form-label">Mata Pelajaran Favorit</label><input type="text" class="pr-form-input" name="mapel_favorit"></div><div class="pr-form-group full"><label class="pr-form-label">Mata Pelajaran yang Dirasa Sulit</label><input type="text" class="pr-form-input" name="mapel_sulit"></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 7 -->
 <div class="pr-section" data-step="7"><span class="pr-step-counter">📍 Langkah 7 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">🎯</div><div><div class="pr-section-title">Minat, Bakat & Cita-Cita</div><div class="pr-section-subtitle">Eksplorasi potensi dan aspirasi masa depan</div></div></div><div class="pr-form-grid"><div class="pr-form-group full"><label class="pr-form-label">Hobi / Kegemaran</label><input type="text" class="pr-form-input" name="hobi"></div><div class="pr-form-group full"><label class="pr-form-label">Cita-cita</label><input type="text" class="pr-form-input" name="cita_cita"></div><div class="pr-form-group full"><label class="pr-form-label">Minat Bidang Studi Lanjut <span class="multi-hint">✓ Boleh pilih lebih dari satu</span><span class="pr-checkbox-selected-count" id="count-minat_bidang" style="display:none">0 dipilih</span></label><div class="pr-checkbox-grid"><div class="pr-checkbox-item"><input type="checkbox" name="minat_bidang" value="MIPA" onchange="updateCheckboxCount('minat_bidang','count-minat_bidang')"><label>🔬 MIPA / Saintek</label></div><div class="pr-checkbox-item"><input type="checkbox" name="minat_bidang" value="IPS" onchange="updateCheckboxCount('minat_bidang','count-minat_bidang')"><label>🌏 IPS / Soshum</label></div><div class="pr-checkbox-item"><input type="checkbox" name="minat_bidang" value="Bahasa" onchange="updateCheckboxCount('minat_bidang','count-minat_bidang')"><label>📚 Bahasa & Budaya</label></div><div class="pr-checkbox-item"><input type="checkbox" name="minat_bidang" value="Agama" onchange="updateCheckboxCount('minat_bidang','count-minat_bidang')"><label>🕌 Keagamaan</label></div><div class="pr-checkbox-item"><input type="checkbox" name="minat_bidang" value="Vokasi" onchange="updateCheckboxCount('minat_bidang','count-minat_bidang')"><label>🛠️ Vokasi / SMK</label></div><div class="pr-checkbox-item"><input type="checkbox" name="minat_bidang" value="Seni" onchange="updateCheckboxCount('minat_bidang','count-minat_bidang')"><label>🎨 Seni & Olahraga</label></div><div class="pr-checkbox-item"><input type="checkbox" name="minat_bidang" value="Belum Tahu" onchange="updateCheckboxCount('minat_bidang','count-minat_bidang')"><label>❓ Belum Menentu</label></div></div></div><div class="pr-form-group full"><label class="pr-form-label">Bakat Khusus <span class="multi-hint">✓ Boleh pilih lebih dari satu</span><span class="pr-checkbox-selected-count" id="count-bakat_khusus" style="display:none">0 dipilih</span></label><div class="pr-checkbox-grid"><div class="pr-checkbox-item"><input type="checkbox" name="bakat_khusus" value="Akademik" onchange="updateCheckboxCount('bakat_khusus','count-bakat_khusus')"><label>📖 Akademik</label></div><div class="pr-checkbox-item"><input type="checkbox" name="bakat_khusus" value="Olahraga" onchange="updateCheckboxCount('bakat_khusus','count-bakat_khusus')"><label>⚽ Olahraga</label></div><div class="pr-checkbox-item"><input type="checkbox" name="bakat_khusus" value="Seni" onchange="updateCheckboxCount('bakat_khusus','count-bakat_khusus')"><label>🎭 Seni</label></div><div class="pr-checkbox-item"><input type="checkbox" name="bakat_khusus" value="Organisasi" onchange="updateCheckboxCount('bakat_khusus','count-bakat_khusus')"><label>👥 Kepemimpinan</label></div><div class="pr-checkbox-item"><input type="checkbox" name="bakat_khusus" value="Teknologi" onchange="updateCheckboxCount('bakat_khusus','count-bakat_khusus')"><label>💻 Teknologi</label></div><div class="pr-checkbox-item"><input type="checkbox" name="bakat_khusus" value="Keagamaan" onchange="updateCheckboxCount('bakat_khusus','count-bakat_khusus')"><label>🕌 Keagamaan</label></div></div></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 8 -->
 <div class="pr-section" data-step="8"><span class="pr-step-counter">📍 Langkah 8 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">🏃</div><div><div class="pr-section-title">Kegiatan Sehari-hari</div><div class="pr-section-subtitle">Rutinitas dan aktivitas di luar sekolah</div></div></div><div class="pr-form-grid"><div class="pr-form-group full"><label class="pr-form-label">Ekstrakurikuler yang Diikuti <span class="multi-hint">✓ Boleh pilih lebih dari satu</span><span class="pr-checkbox-selected-count" id="count-ekskul" style="display:none">0 dipilih</span></label><div class="pr-checkbox-grid"><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Pramuka" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🏕️ Pramuka</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Paskibra" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🚩 Paskibra</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="PMR" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>⛑️ PMR</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Karate" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🥋 Karate</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Silat" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🥋 Silat</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Olahraga" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>⚽ Olahraga</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Atletik" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🏃 Atletik</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Basket" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🏀 Basket</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Volly" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🏐 Volley</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Futsal" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>⚽ Futsal</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Musik" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🎵 Musik</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Tari" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>💃 Tari</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Rohis" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🕌 Rohis</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="Karya Ilmiah" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🔬 Karya Ilmiah</label></div><div class="pr-checkbox-item"><input type="checkbox" name="ekskul" value="English Club" onchange="updateCheckboxCount('ekskul','count-ekskul')"><label>🇬🇧 English Club</label></div></div></div><div class="pr-form-group full"><label class="pr-form-label">Bimbingan Belajar / Les</label><select class="pr-form-select" name="les"><option value="">-- Pilih --</option><option>Tidak mengikuti les</option><option>Les Privat</option><option>Bimbel Kelompok</option><option>Les Online</option><option>Belajar Mandiri</option></select></div><div class="pr-form-group"><label class="pr-form-label">Waktu Belajar di Rumah</label><select class="pr-form-select" name="waktu_belajar"><option value="">-- Pilih --</option><option>&lt; 1 jam/hari</option><option>1-2 jam/hari</option><option>2-3 jam/hari</option><option>&gt; 3 jam/hari</option></select></div><div class="pr-form-group"><label class="pr-form-label">Waktu Tidur Malam</label><select class="pr-form-select" name="waktu_tidur"><option value="">-- Pilih --</option><option>&lt; 21.00</option><option>21.00 - 22.00</option><option>22.00 - 23.00</option><option>&gt; 23.00</option></select></div><div class="pr-form-group full"><label class="pr-form-label">Tugas di Rumah</label><textarea class="pr-form-textarea" name="tugas_rumah"></textarea></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 9 -->
 <div class="pr-section" data-step="9"><span class="pr-step-counter">📍 Langkah 9 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">📱</div><div><div class="pr-section-title">Penggunaan Gadget & Media Sosial</div><div class="pr-section-subtitle">Kebiasaan digital dan literasi teknologi</div></div></div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Memiliki HP Pribadi?</label><select class="pr-form-select" name="punya_hp"><option value="">-- Pilih --</option><option>Ya, HP Sendiri</option><option>Ya, HP Kakak/Orang Tua</option><option>Tidak Memiliki</option></select></div><div class="pr-form-group"><label class="pr-form-label">Durasi Main HP per Hari</label><select class="pr-form-select" name="durasi_hp"><option value="">-- Pilih --</option><option>&lt; 1 jam</option><option>1-3 jam</option><option>3-5 jam</option><option>5-7 jam</option><option>&gt; 7 jam</option></select></div><div class="pr-form-group full"><label class="pr-form-label">Aplikasi yang Sering Digunakan <span class="multi-hint">✓ Boleh pilih lebih dari satu</span><span class="pr-checkbox-selected-count" id="count-aplikasi" style="display:none">0 dipilih</span></label><div class="pr-checkbox-grid"><div class="pr-checkbox-item"><input type="checkbox" name="aplikasi" value="WhatsApp" onchange="updateCheckboxCount('aplikasi','count-aplikasi')"><label>💬 WhatsApp</label></div><div class="pr-checkbox-item"><input type="checkbox" name="aplikasi" value="Instagram" onchange="updateCheckboxCount('aplikasi','count-aplikasi')"><label>📷 Instagram</label></div><div class="pr-checkbox-item"><input type="checkbox" name="aplikasi" value="TikTok" onchange="updateCheckboxCount('aplikasi','count-aplikasi')"><label>🎵 TikTok</label></div><div class="pr-checkbox-item"><input type="checkbox" name="aplikasi" value="YouTube" onchange="updateCheckboxCount('aplikasi','count-aplikasi')"><label>▶️ YouTube</label></div><div class="pr-checkbox-item"><input type="checkbox" name="aplikasi" value="Mobile Legends" onchange="updateCheckboxCount('aplikasi','count-aplikasi')"><label>🎮 Mobile Legends</label></div><div class="pr-checkbox-item"><input type="checkbox" name="aplikasi" value="Free Fire" onchange="updateCheckboxCount('aplikasi','count-aplikasi')"><label>🔫 Free Fire</label></div></div></div><div class="pr-form-group full"><label class="pr-form-label">Aktivitas Utama di Internet</label><textarea class="pr-form-textarea" name="aktivitas_internet"></textarea></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 10 -->
 <div class="pr-section" data-step="10"><span class="pr-step-counter">📍 Langkah 10 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">💭</div><div><div class="pr-section-title">Kondisi Emosional & Sosial</div><div class="pr-section-subtitle">Refleksi diri tentang perasaan dan hubungan sosial</div></div></div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Tipe Kepribadian</label><select class="pr-form-select" name="tipe_kepribadian"><option value="">-- Pilih --</option><option>Introvert</option><option>Ekstrovert</option><option>Ambivert</option><option>Belum Tahu</option></select></div><div class="pr-form-group"><label class="pr-form-label">Jumlah Teman Dekat</label><select class="pr-form-select" name="jumlah_teman"><option value="">-- Pilih --</option><option>Tidak punya</option><option>1-2 orang</option><option>3-5 orang</option><option>6-10 orang</option><option>&gt; 10 orang</option></select></div><div class="pr-form-group full"><label class="pr-form-label">Perasaanmu Saat Ini di Sekolah <span class="multi-hint">✓ Boleh pilih lebih dari satu</span><span class="pr-checkbox-selected-count" id="count-perasaan" style="display:none">0 dipilih</span></label><div class="pr-checkbox-grid"><div class="pr-checkbox-item"><input type="checkbox" name="perasaan" value="Bahagia" onchange="updateCheckboxCount('perasaan','count-perasaan')"><label>😊 Bahagia</label></div><div class="pr-checkbox-item"><input type="checkbox" name="perasaan" value="Semangat" onchange="updateCheckboxCount('perasaan','count-perasaan')"><label>🤩 Semangat</label></div><div class="pr-checkbox-item"><input type="checkbox" name="perasaan" value="Biasa Saja" onchange="updateCheckboxCount('perasaan','count-perasaan')"><label>😐 Biasa Saja</label></div><div class="pr-checkbox-item"><input type="checkbox" name="perasaan" value="Cemas" onchange="updateCheckboxCount('perasaan','count-perasaan')"><label>😰 Cemas</label></div><div class="pr-checkbox-item"><input type="checkbox" name="perasaan" value="Sedih" onchange="updateCheckboxCount('perasaan','count-perasaan')"><label>😢 Sedih</label></div><div class="pr-checkbox-item"><input type="checkbox" name="perasaan" value="Kesepian" onchange="updateCheckboxCount('perasaan','count-perasaan')"><label>🥺 Kesepian</label></div></div></div><div class="pr-form-group full"><label class="pr-form-label">Pernah Mengalami Bullying?</label><select class="pr-form-select" name="pernah_bully"><option value="">-- Pilih --</option><option>Tidak Pernah</option><option>Pernah, tapi sudah selesai</option><option>Sedang Mengalami</option><option>Pernah Menjadi Pelaku</option></select></div><div class="pr-form-group full"><label class="pr-form-label">Hal yang Paling Kamu Khawatirkan</label><textarea class="pr-form-textarea" name="kekhawatiran"></textarea></div><div class="pr-form-group full"><label class="pr-form-label">Hal yang Paling Kamu Banggakan</label><textarea class="pr-form-textarea" name="kebanggaan"></textarea></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 11 -->
 <div class="pr-section" data-step="11"><span class="pr-step-counter">📍 Langkah 11 dari 12</span><div class="pr-section-header"><div class="pr-section-icon">🌟</div><div><div class="pr-section-title">Harapan & Kebutuhan Layanan BK9</div><div class="pr-section-subtitle">Apa yang kamu harapkan dari Guru BK9</div></div></div><div class="pr-form-grid"><div class="pr-form-group full"><label class="pr-form-label">Topik BK9 yang Ingin Dipelajari <span class="multi-hint">✓ Boleh pilih lebih dari satu</span><span class="pr-checkbox-selected-count" id="count-topik_bk9" style="display:none">0 dipilih</span></label><div class="pr-checkbox-grid"><div class="pr-checkbox-item"><input type="checkbox" name="topik_bk9" value="Cara Belajar" onchange="updateCheckboxCount('topik_bk9','count-topik_bk9')"><label>📚 Cara Belajar Efektif</label></div><div class="pr-checkbox-item"><input type="checkbox" name="topik_bk9" value="Manajemen Emosi" onchange="updateCheckboxCount('topik_bk9','count-topik_bk9')"><label>💖 Manajemen Emosi</label></div><div class="pr-checkbox-item"><input type="checkbox" name="topik_bk9" value="Pergaulan" onchange="updateCheckboxCount('topik_bk9','count-topik_bk9')"><label>👫 Pergaulan Sehat</label></div><div class="pr-checkbox-item"><input type="checkbox" name="topik_bk9" value="Karir" onchange="updateCheckboxCount('topik_bk9','count-topik_bk9')"><label>💼 Perencanaan Karir</label></div><div class="pr-checkbox-item"><input type="checkbox" name="topik_bk9" value="Anti Bullying" onchange="updateCheckboxCount('topik_bk9','count-topik_bk9')"><label>🛡️ Anti Bullying</label></div><div class="pr-checkbox-item"><input type="checkbox" name="topik_bk9" value="Literasi Digital" onchange="updateCheckboxCount('topik_bk9','count-topik_bk9')"><label>📱 Literasi Digital</label></div></div></div><div class="pr-form-group full"><label class="pr-form-label">Jenis Layanan BK9 yang Dibutuhkan <span class="multi-hint">✓ Boleh pilih lebih dari satu</span><span class="pr-checkbox-selected-count" id="count-layanan_bk9" style="display:none">0 dipilih</span></label><div class="pr-checkbox-grid"><div class="pr-checkbox-item"><input type="checkbox" name="layanan_bk9" value="Konseling Individual" onchange="updateCheckboxCount('layanan_bk9','count-layanan_bk9')"><label>👤 Konseling Individual</label></div><div class="pr-checkbox-item"><input type="checkbox" name="layanan_bk9" value="Konseling Kelompok" onchange="updateCheckboxCount('layanan_bk9','count-layanan_bk9')"><label>👥 Konseling Kelompok</label></div><div class="pr-checkbox-item"><input type="checkbox" name="layanan_bk9" value="Layanan Klasikal" onchange="updateCheckboxCount('layanan_bk9','count-layanan_bk9')"><label>🏫 Layanan Klasikal</label></div><div class="pr-checkbox-item"><input type="checkbox" name="layanan_bk9" value="Bimbingan Karir" onchange="updateCheckboxCount('layanan_bk9','count-layanan_bk9')"><label>💼 Bimbingan Karir</label></div></div></div><div class="pr-form-group full"><label class="pr-form-label">Pesan untuk Guru BK9</label><textarea class="pr-form-textarea" name="pesan_guru_bk9" style="min-height:100px"></textarea></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-next" onclick="nextStep()">Selanjutnya ➡️</button></div></div>
-<!-- STEP 12 -->
 <div class="pr-section" data-step="12"><span class="pr-step-counter">📍 Langkah 12 dari 12 — Langkah Terakhir</span><div class="pr-section-header"><div class="pr-section-icon">✅</div><div><div class="pr-section-title">Pernyataan Kebenaran Data & Tanda Tangan</div><div class="pr-section-subtitle">Konfirmasi kejujuran + tanda tangan digital Siswa & Orang Tua/Wali</div></div></div><div class="pr-info-box"><strong>⚠️ Penting:</strong> Dengan menekan tombol "Kirim & Simpan Data", <strong>seluruh data dari langkah 1-12</strong> akan tersimpan ke Google Spreadsheet, lalu <strong>Laporan PDF F4</strong> akan otomatis dibuat.</div><div class="pr-form-group"><div class="pr-checkbox-item" style="background:#fef3c7;border-color:#fde68a"><input type="checkbox" id="pr-pernyataan" name="pernyataan" value="ya" required><label for="pr-pernyataan" style="font-weight:700;color:#78350f">✅ Saya menyatakan seluruh data yang saya isi adalah BENAR dan JUJUR. <span class="required">*</span></label></div></div><div class="pr-divider"></div><div class="pr-subsection-title">📅 Informasi Pengisian</div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Tanggal Pengisian</label><input type="date" class="pr-form-input" name="tanggal_isi" id="pr-tanggal-isi"></div><div class="pr-form-group"><label class="pr-form-label">Tempat Pengisian</label><input type="text" class="pr-form-input" name="tempat_isi" value="SMP Negeri 56 Jakarta" readonly></div></div><div class="pr-divider"></div><div class="pr-subsection-title">✍️ Tanda Tangan Siswa</div><div class="pr-form-group full"><canvas id="pr-signature-canvas" width="400" height="120" style="border:2px dashed #06b6d4;border-radius:10px;background:#f0fdfa;cursor:crosshair;max-width:100%;touch-action:none"></canvas><div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap"><button type="button" class="pr-photo-btn" onclick="clearSignature('siswa')" style="background:#fee2e2;color:#dc2626">🗑️ Hapus TTD Siswa</button><span style="font-size:0.8rem;color:#64748b;align-self:center">💡 Gunakan mouse/jari untuk menandatangani</span></div></div><div class="pr-divider"></div><div class="pr-subsection-title">👨‍👩‍👧 Tanda Tangan Orang Tua / Wali</div><div class="pr-form-grid"><div class="pr-form-group"><label class="pr-form-label">Nama Penandatangan (Orang Tua/Wali) <span class="required">*</span></label><input type="text" class="pr-form-input" name="nama_penandatangan_ortu" required></div><div class="pr-form-group"><label class="pr-form-label">Hubungan dengan Siswa <span class="required">*</span></label><select class="pr-form-select" name="hubungan_penandatangan" required><option value="">-- Pilih Hubungan --</option><option>Ayah Kandung</option><option>Ibu Kandung</option><option>Wali</option><option>Paman</option><option>Tante</option><option>Kakak Kandung</option><option>Kakek/Nenek</option><option>Lainnya</option></select></div><div class="pr-form-group"><label class="pr-form-label">No. HP Penandatangan</label><input type="tel" class="pr-form-input" name="hp_penandatangan_ortu" inputmode="tel"></div><div class="pr-form-group"><label class="pr-form-label">Tanggal Penandatanganan</label><input type="date" class="pr-form-input" name="tanggal_ttd_ortu" id="pr-tanggal-ttd-ortu"></div></div><div class="pr-form-group full" style="margin-top:1rem"><label class="pr-form-label">Tanda Tangan Orang Tua / Wali</label><canvas id="pr-signature-ortu-canvas" width="400" height="120" style="border:2px dashed #7c3aed;border-radius:10px;background:#faf5ff;cursor:crosshair;max-width:100%;touch-action:none"></canvas><div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap"><button type="button" class="pr-photo-btn" onclick="clearSignature('ortu')" style="background:#fee2e2;color:#dc2626">🗑️ Hapus TTD Ortu</button><span style="font-size:0.8rem;color:#64748b;align-self:center">💡 Gunakan mouse/jari untuk menandatangani</span></div></div><div class="pr-step-nav"><div class="pr-autosave-status">💾 Data tersimpan saat submit</div><button type="button" class="pr-nav-btn pr-nav-prev" onclick="prevStep()">⬅️ Sebelumnya</button><button type="button" class="pr-nav-btn pr-nav-submit" onclick="submitProfile()">📤 Kirim & Simpan Data + Generate PDF</button></div></div>
 </form>
 <div class="pr-action-bar">
 <button type="button" class="pr-btn" onclick="saveLocalOnly()">💾 Simpan Lokal</button>
-<button type="button" class="pr-btn" onclick="window.print()">🖨️ Cetak</button>
+<button type="button" class="pr-btn" onclick="openCetakModal()">🖨️ Cetak PDF</button>
 <button type="button" class="pr-btn" onclick="loadFromLocal()">📂 Muat Data</button>
 <button type="button" class="pr-btn danger" onclick="resetProfileForm()">🔄 Reset</button>
 <button type="button" class="pr-btn webbk-btn" onclick="goToWebBK()">🌐 WebBK</button>
@@ -593,7 +677,6 @@ background: white !important;
 <p class="pr-copyright">📡 Data tersinkronisasi ke Google Sheets • PDF otomatis ke Google Drive</p>
 </div>
 </footer>
-<!-- GURU BK9 MODAL -->
 <div class="guru-bk9-modal" id="guruBK9Modal">
 <div class="guru-bk9-modal-content">
 <div class="guru-bk9-modal-header">
@@ -631,7 +714,6 @@ background: white !important;
 </div>
 </div>
 </div>
-<!-- PDF VIEWER -->
 <div class="pdf-viewer-overlay" id="pdfViewerOverlay">
 <div class="pdf-viewer-container">
 <div class="pdf-viewer-header">
@@ -672,7 +754,17 @@ const NAMA_HARI_ID = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const DEFAULT_GURU_PASSWORD = '@bk56jakarta#';
 const LOGIN_TIMEOUT_MS = 15000;
 const PROGRESS_UPDATE_MS = 3000;
-// ✅ FUNGSI MODAL PETUNJUK
+
+// ✅ VARIABEL GLOBAL UNTUK MODAL HASIL KIRIM
+var lastSubmitResult = {
+pdf_url: '',
+foto_link: '',
+nama: '',
+nisn: '',
+kelas: '',
+record_id: ''
+};
+
 function openPetunjuk() {
 var overlay = document.getElementById('prPetunjukOverlay');
 if (overlay) {
@@ -685,6 +777,73 @@ var overlay = document.getElementById('prPetunjukOverlay');
 if (overlay) {
 overlay.classList.remove('show');
 document.body.style.overflow = '';
+}
+}
+// ✅ FUNGSI MODAL CETAK PDF BERDASARKAN NIS
+function openCetakModal() {
+var overlay = document.getElementById('prCetakOverlay');
+if (overlay) {
+overlay.classList.add('show');
+document.body.style.overflow = 'hidden';
+document.getElementById('cetakNisInput').value = '';
+document.getElementById('cetakError').classList.remove('show');
+setTimeout(function() { document.getElementById('cetakNisInput').focus(); }, 300);
+}
+}
+function closeCetakModal() {
+var overlay = document.getElementById('prCetakOverlay');
+if (overlay) {
+overlay.classList.remove('show');
+document.body.style.overflow = '';
+}
+}
+async function cariDanCetakPDF() {
+var input = document.getElementById('cetakNisInput');
+var errorEl = document.getElementById('cetakError');
+var btn = document.getElementById('cetakSearchBtn');
+var nis = input.value.trim();
+errorEl.classList.remove('show');
+if (!nis) {
+errorEl.textContent = '⚠️ Masukkan NIS siswa terlebih dahulu!';
+errorEl.classList.add('show');
+input.focus();
+return;
+}
+var originalBtnHTML = btn.innerHTML;
+btn.disabled = true;
+btn.innerHTML = '⏳ Mencari...';
+try {
+var payload = { action: 'search_profile', search_by: 'nis', keyword: nis };
+var res = await fetch(BACKEND_URL, {
+method: 'POST',
+body: JSON.stringify(payload),
+headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+redirect: 'follow'
+});
+var result = await res.json();
+if (result.success && result.data) {
+if (result.pdf_url) {
+closeCetakModal();
+setTimeout(function() {
+var nama = result.data.nama_lengkap || 'Siswa';
+var nisn = String(result.data.nisn || '-').replace(/^'+/, '');
+openPdfViewer(result.pdf_url, nama, nisn);
+showToast('✅ PDF berhasil dibuka!', 'success');
+}, 300);
+} else {
+errorEl.innerHTML = '⚠️ <strong>Data ditemukan, tapi PDF belum tersedia.</strong><br>Siswa tersebut belum menyelesaikan pengisian form.';
+errorEl.classList.add('show');
+}
+} else {
+errorEl.textContent = '❌ ' + (result.error || 'Data siswa dengan NIS tersebut tidak ditemukan.');
+errorEl.classList.add('show');
+}
+} catch (err) {
+errorEl.textContent = '❌ Gagal mencari: ' + err.message;
+errorEl.classList.add('show');
+} finally {
+btn.disabled = false;
+btn.innerHTML = originalBtnHTML;
 }
 }
 function goToWebBK() {
@@ -749,6 +908,77 @@ var cleanup = function() { overlay.classList.remove('show'); };
 document.getElementById('prConfirmYes').onclick = function() { cleanup(); if (onYes) onYes(); };
 document.getElementById('prConfirmNo').onclick  = function() { cleanup(); if (onNo)  onNo();  };
 }
+
+// ✅ FUNGSI MODAL HASIL KIRIM SUKSES
+function showSuccessResult(result) {
+lastSubmitResult = {
+pdf_url: result.pdf_url || '',
+foto_link: result.foto_link || '',
+nama: result.nama || '-',
+nisn: result.nisn || '-',
+kelas: result.kelas || '-',
+record_id: result.record_id || '-'
+};
+document.getElementById('successNama').textContent = lastSubmitResult.nama;
+document.getElementById('successNisn').textContent = lastSubmitResult.nisn;
+document.getElementById('successKelas').textContent = lastSubmitResult.kelas;
+document.getElementById('successRecordId').textContent = lastSubmitResult.record_id;
+var pdfBtn = document.getElementById('successPdfBtn');
+var photoBtn = document.getElementById('successPhotoBtn');
+if (lastSubmitResult.pdf_url) {
+pdfBtn.classList.remove('disabled');
+pdfBtn.disabled = false;
+pdfBtn.querySelector('.link-desc').textContent = 'Klik untuk membuka dokumen PDF Profile Siswa';
+} else {
+pdfBtn.classList.add('disabled');
+pdfBtn.disabled = true;
+pdfBtn.querySelector('.link-desc').textContent = 'PDF belum tersedia saat ini';
+}
+if (lastSubmitResult.foto_link) {
+photoBtn.classList.remove('disabled');
+photoBtn.disabled = false;
+photoBtn.querySelector('.link-desc').textContent = 'Klik untuk membuka pas foto yang diupload';
+} else {
+photoBtn.classList.add('disabled');
+photoBtn.disabled = true;
+photoBtn.querySelector('.link-desc').textContent = 'Foto belum tersedia saat ini';
+}
+var overlay = document.getElementById('prSuccessOverlay');
+overlay.classList.add('show');
+document.body.style.overflow = 'hidden';
+}
+function closeSuccessResult() {
+var overlay = document.getElementById('prSuccessOverlay');
+if (overlay) {
+overlay.classList.remove('show');
+document.body.style.overflow = '';
+}
+}
+function handleSuccessPdfClick() {
+if (!lastSubmitResult.pdf_url) {
+showToast('❌ Link PDF belum tersedia', 'error');
+return;
+}
+closeSuccessResult();
+setTimeout(function() {
+openPdfViewer(lastSubmitResult.pdf_url, lastSubmitResult.nama, lastSubmitResult.nisn);
+}, 200);
+}
+function handleSuccessPhotoClick() {
+if (!lastSubmitResult.foto_link) {
+showToast('❌ Link foto belum tersedia', 'error');
+return;
+}
+window.open(lastSubmitResult.foto_link, '_blank');
+showToast('📸 Foto dibuka di tab baru', 'success');
+}
+function finishAndReset() {
+closeSuccessResult();
+setTimeout(function() {
+clearFormAfterSubmit();
+}, 200);
+}
+
 window.addEventListener('DOMContentLoaded', function() {
 initSignaturePad();
 var tgl = document.getElementById('pr-tanggal-isi');
@@ -763,11 +993,24 @@ initCheckboxVisual();
 document.getElementById('guruBK9Modal').addEventListener('click', function(e) { if (e.target.id === 'guruBK9Modal') closeGuruBK9Modal(); });
 document.getElementById('guruPasswordInput').addEventListener('keypress', function(e) { if (e.key === 'Enter') loginGuruBK9(); });
 document.getElementById('guruSearchInput').addEventListener('keypress', function(e) { if (e.key === 'Enter') searchProfile(); });
-// ✅ Event listener untuk modal petunjuk
+// ✅ TAMBAHKAN BARIS INI:
+document.getElementById('cetakNisInput').addEventListener('keypress', function(e) { 
+if (e.key === 'Enter') cariDanCetakPDF(); 
+});
 var petunjukOverlay = document.getElementById('prPetunjukOverlay');
 if (petunjukOverlay) {
 petunjukOverlay.addEventListener('click', function(e) {
 if (e.target === petunjukOverlay) closePetunjuk();
+});
+}
+// ✅ TAMBAHKAN BARIS INI:
+document.getElementById('cetakNisInput').addEventListener('keypress', function(e) { 
+if (e.key === 'Enter') cariDanCetakPDF(); 
+});
+var successOverlay = document.getElementById('prSuccessOverlay');
+if (successOverlay) {
+successOverlay.addEventListener('click', function(e) {
+if (e.target === successOverlay) closeSuccessResult();
 });
 }
 document.addEventListener('keydown', function(e) {
@@ -776,6 +1019,10 @@ var pdfOverlay = document.getElementById('pdfViewerOverlay');
 if (pdfOverlay && pdfOverlay.classList.contains('show')) closePdfViewer();
 var petunjukOv = document.getElementById('prPetunjukOverlay');
 if (petunjukOv && petunjukOv.classList.contains('show')) closePetunjuk();
+var cetakOv = document.getElementById('prCetakOverlay');
+if (cetakOv && cetakOv.classList.contains('show')) closeCetakModal();
+var successOv = document.getElementById('prSuccessOverlay');
+if (successOv && successOv.classList.contains('show')) closeSuccessResult();
 }
 });
 });
@@ -841,62 +1088,53 @@ if (idx + 1 < currentStep) line.classList.add('completed');
 });
 }
 function validateCurrentStep() {
-  var section = document.querySelector('.pr-section[data-step="' + currentStep + '"]');
-  if (!section) return true;
-
-  var requiredFields = section.querySelectorAll('[required]');
-  var missing = [];
-
-  for (var i = 0; i < requiredFields.length; i++) {
-    var field = requiredFields[i];
-    var isValid = false;
-    if (field.type === 'checkbox' || field.type === 'radio') {
-      isValid = field.checked;
-    } else {
-      isValid = (field.value !== null && field.value !== undefined && String(field.value).trim() !== '');
-    }
-    if (!isValid) missing.push(field);
-  }
-
-  if (missing.length > 0) {
-    var first = missing[0];
-    try {
-      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(function(){
-        try { first.focus({ preventScroll: true }); } catch(e){ try{ first.focus(); }catch(e2){} }
-      }, 300);
-    } catch(e) {}
-
-    // Highlight merah
-    first.style.transition = 'all 0.3s ease';
-    first.style.borderColor = '#ef4444';
-    first.style.boxShadow = '0 0 0 4px rgba(239,68,68,0.25)';
-    first.style.background = '#fef2f2';
-    setTimeout(function() {
-      first.style.borderColor = '';
-      first.style.boxShadow = '';
-      first.style.background = '';
-    }, 3000);
-
-    // Pesan lebih informatif
-    var labelEl = first.closest('.pr-form-group');
-    var labelName = 'Field wajib';
-    if (labelEl) {
-      var lbl = labelEl.querySelector('.pr-form-label');
-      if (lbl) labelName = lbl.textContent.replace(/\*/g,'').trim();
-    }
-    showToast('⚠️ Lengkapi: ' + labelName + (missing.length > 1 ? ' (+' + (missing.length-1) + ' lainnya)' : ''), 'error');
-    return false;
-  }
-
-  // Cek format valid (email, number, dll)
-  for (var j = 0; j < requiredFields.length; j++) {
-    if (!requiredFields[j].checkValidity()) {
-      requiredFields[j].reportValidity();
-      return false;
-    }
-  }
-  return true;
+var section = document.querySelector('.pr-section[data-step="' + currentStep + '"]');
+if (!section) return true;
+var requiredFields = section.querySelectorAll('[required]');
+var missing = [];
+for (var i = 0; i < requiredFields.length; i++) {
+var field = requiredFields[i];
+var isValid = false;
+if (field.type === 'checkbox' || field.type === 'radio') {
+isValid = field.checked;
+} else {
+isValid = (field.value !== null && field.value !== undefined && String(field.value).trim() !== '');
+}
+if (!isValid) missing.push(field);
+}
+if (missing.length > 0) {
+var first = missing[0];
+try {
+first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+setTimeout(function(){
+try { first.focus({ preventScroll: true }); } catch(e){ try{ first.focus(); }catch(e2){} }
+}, 300);
+} catch(e) {}
+first.style.transition = 'all 0.3s ease';
+first.style.borderColor = '#ef4444';
+first.style.boxShadow = '0 0 0 4px rgba(239,68,68,0.25)';
+first.style.background = '#fef2f2';
+setTimeout(function() {
+first.style.borderColor = '';
+first.style.boxShadow = '';
+first.style.background = '';
+}, 3000);
+var labelEl = first.closest('.pr-form-group');
+var labelName = 'Field wajib';
+if (labelEl) {
+var lbl = labelEl.querySelector('.pr-form-label');
+if (lbl) labelName = lbl.textContent.replace(/\*/g,'').trim();
+}
+showToast('⚠️ Lengkapi: ' + labelName + (missing.length > 1 ? ' (+' + (missing.length-1) + ' lainnya)' : ''), 'error');
+return false;
+}
+for (var j = 0; j < requiredFields.length; j++) {
+if (!requiredFields[j].checkValidity()) {
+requiredFields[j].reportValidity();
+return false;
+}
+}
+return true;
 }
 function nextStep() {
 if (!validateCurrentStep()) { showToast('⚠️ Lengkapi semua field wajib di langkah ini!', 'error'); return; }
@@ -933,141 +1171,119 @@ data._userAgent = navigator.userAgent;
 return data;
 }
 function submitProfile() {
-  showCustomConfirm(
-    'Anda sudah yakin dengan isian Data yang anda lakukan?',
-    async function() {
-      // ✅ CEK 1: Pernyataan kebenaran data
-      var pernyataan = document.getElementById('pr-pernyataan');
-      if (!pernyataan || !pernyataan.checked) {
-        showToast('⚠️ Centang pernyataan kebenaran data terlebih dahulu!', 'error');
-        if (pernyataan) {
-          pernyataan.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setTimeout(function(){ pernyataan.focus(); }, 400);
-        }
-        return;
-      }
-
-      // ✅ CEK 2: Validasi semua field required di SELURUH form (step 1-12)
-      var form = document.getElementById('profileForm');
-      var requiredFields = form.querySelectorAll('[required]');
-      var missingFields = [];
-
-      for (var i = 0; i < requiredFields.length; i++) {
-        var field = requiredFields[i];
-        // Skip checkbox pernyataan (sudah dicek di atas)
-        if (field.id === 'pr-pernyataan') continue;
-
-        var isValid = false;
-        if (field.type === 'checkbox' || field.type === 'radio') {
-          isValid = field.checked;
-        } else {
-          isValid = (field.value !== null && field.value !== undefined && String(field.value).trim() !== '');
-        }
-
-        if (!isValid) {
-          var section = field.closest('.pr-section');
-          var step = section ? parseInt(section.dataset.step) || 1 : 1;
-          var label = 'Field';
-          var labelEl = field.closest('.pr-form-group');
-          if (labelEl) {
-            var lbl = labelEl.querySelector('.pr-form-label');
-            if (lbl) {
-              label = lbl.textContent
-                .replace(/\*/g, '')
-                .replace(/✓ Boleh pilih lebih dari satu/g, '')
-                .replace(/\d+ dipilih/g, '')
-                .trim();
-            }
-          }
-          if (!label || label === 'Field') label = field.name || 'Field';
-          missingFields.push({ step: step, label: label, field: field });
-        }
-      }
-
-      // ✅ CEK 3: Jika ada field kosong → navigasi & highlight
-      if (missingFields.length > 0) {
-        var firstMissing = missingFields[0];
-
-        // Navigasi ke step yang memiliki field kosong
-        if (firstMissing.step !== currentStep) {
-          goToStep(firstMissing.step);
-        }
-
-        // Focus & highlight field yang bermasalah
-        setTimeout(function() {
-          try {
-            firstMissing.field.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            firstMissing.field.focus({ preventScroll: true });
-          } catch(e) {
-            try { firstMissing.field.focus(); } catch(e2) {}
-          }
-          // Efek highlight merah
-          firstMissing.field.style.transition = 'all 0.3s ease';
-          firstMissing.field.style.borderColor = '#ef4444';
-          firstMissing.field.style.boxShadow = '0 0 0 4px rgba(239,68,68,0.25)';
-          firstMissing.field.style.background = '#fef2f2';
-          setTimeout(function() {
-            firstMissing.field.style.borderColor = '';
-            firstMissing.field.style.boxShadow = '';
-            firstMissing.field.style.background = '';
-          }, 3500);
-        }, 400);
-
-        // Tampilkan pesan detail
-        var msg = '⚠️ Masih ada ' + missingFields.length + ' field wajib yang kosong!';
-        if (missingFields.length <= 3) {
-          var detail = missingFields.map(function(f) {
-            return '• Langkah ' + f.step + ': ' + f.label;
-          }).join(' | ');
-          msg += ' ' + detail;
-        } else {
-          msg += ' Cek: ' + missingFields.slice(0, 2).map(function(f){ return f.label; }).join(', ') + '...';
-        }
-        showToast(msg, 'error');
-        return;
-      }
-
-      // ✅ CEK 4: Validasi format (email, number, dll)
-      if (!form.checkValidity()) {
-        // Cari field yang invalid format-nya
-        var invalidField = null;
-        for (var j = 0; j < requiredFields.length; j++) {
-          if (!requiredFields[j].checkValidity()) {
-            invalidField = requiredFields[j];
-            break;
-          }
-        }
-        // Cek juga field non-required yang punya pattern/type validation
-        if (!invalidField) {
-          var allInputs = form.querySelectorAll('input, select, textarea');
-          for (var k = 0; k < allInputs.length; k++) {
-            if (allInputs[k].value && !allInputs[k].checkValidity()) {
-              invalidField = allInputs[k];
-              break;
-            }
-          }
-        }
-        if (invalidField) {
-          var sec = invalidField.closest('.pr-section');
-          if (sec && parseInt(sec.dataset.step) !== currentStep) {
-            goToStep(parseInt(sec.dataset.step));
-          }
-          setTimeout(function() {
-            try {
-              invalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              invalidField.focus({ preventScroll: true });
-            } catch(e) { try { invalidField.focus(); } catch(e2){} }
-          }, 400);
-          showToast('⚠️ Format isian belum valid. Periksa kembali field yang disorot.', 'error');
-          return;
-        }
-      }
-
-      // ✅ SEMUA VALIDASI LOLOS → Submit
-      await doSubmitFinal();
-    },
-    function() { showToast('⚠️ Pengiriman dibatalkan.', 'info'); }
-  );
+showCustomConfirm(
+'Anda sudah yakin dengan isian Data yang anda lakukan?',
+async function() {
+var pernyataan = document.getElementById('pr-pernyataan');
+if (!pernyataan || !pernyataan.checked) {
+showToast('⚠️ Centang pernyataan kebenaran data terlebih dahulu!', 'error');
+if (pernyataan) {
+pernyataan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+setTimeout(function(){ pernyataan.focus(); }, 400);
+}
+return;
+}
+var form = document.getElementById('profileForm');
+var requiredFields = form.querySelectorAll('[required]');
+var missingFields = [];
+for (var i = 0; i < requiredFields.length; i++) {
+var field = requiredFields[i];
+if (field.id === 'pr-pernyataan') continue;
+var isValid = false;
+if (field.type === 'checkbox' || field.type === 'radio') {
+isValid = field.checked;
+} else {
+isValid = (field.value !== null && field.value !== undefined && String(field.value).trim() !== '');
+}
+if (!isValid) {
+var section = field.closest('.pr-section');
+var step = section ? parseInt(section.dataset.step) || 1 : 1;
+var label = 'Field';
+var labelEl = field.closest('.pr-form-group');
+if (labelEl) {
+var lbl = labelEl.querySelector('.pr-form-label');
+if (lbl) {
+label = lbl.textContent
+.replace(/\*/g, '')
+.replace(/✓ Boleh pilih lebih dari satu/g, '')
+.replace(/\d+ dipilih/g, '')
+.trim();
+}
+}
+if (!label || label === 'Field') label = field.name || 'Field';
+missingFields.push({ step: step, label: label, field: field });
+}
+}
+if (missingFields.length > 0) {
+var firstMissing = missingFields[0];
+if (firstMissing.step !== currentStep) {
+goToStep(firstMissing.step);
+}
+setTimeout(function() {
+try {
+firstMissing.field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+firstMissing.field.focus({ preventScroll: true });
+} catch(e) {
+try { firstMissing.field.focus(); } catch(e2) {}
+}
+firstMissing.field.style.transition = 'all 0.3s ease';
+firstMissing.field.style.borderColor = '#ef4444';
+firstMissing.field.style.boxShadow = '0 0 0 4px rgba(239,68,68,0.25)';
+firstMissing.field.style.background = '#fef2f2';
+setTimeout(function() {
+firstMissing.field.style.borderColor = '';
+firstMissing.field.style.boxShadow = '';
+firstMissing.field.style.background = '';
+}, 3500);
+}, 400);
+var msg = '⚠️ Masih ada ' + missingFields.length + ' field wajib yang kosong!';
+if (missingFields.length <= 3) {
+var detail = missingFields.map(function(f) {
+return '• Langkah ' + f.step + ': ' + f.label;
+}).join(' | ');
+msg += ' ' + detail;
+} else {
+msg += ' Cek: ' + missingFields.slice(0, 2).map(function(f){ return f.label; }).join(', ') + '...';
+}
+showToast(msg, 'error');
+return;
+}
+if (!form.checkValidity()) {
+var invalidField = null;
+for (var j = 0; j < requiredFields.length; j++) {
+if (!requiredFields[j].checkValidity()) {
+invalidField = requiredFields[j];
+break;
+}
+}
+if (!invalidField) {
+var allInputs = form.querySelectorAll('input, select, textarea');
+for (var k = 0; k < allInputs.length; k++) {
+if (allInputs[k].value && !allInputs[k].checkValidity()) {
+invalidField = allInputs[k];
+break;
+}
+}
+}
+if (invalidField) {
+var sec = invalidField.closest('.pr-section');
+if (sec && parseInt(sec.dataset.step) !== currentStep) {
+goToStep(parseInt(sec.dataset.step));
+}
+setTimeout(function() {
+try {
+invalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+invalidField.focus({ preventScroll: true });
+} catch(e) { try { invalidField.focus(); } catch(e2){} }
+}, 400);
+showToast('⚠️ Format isian belum valid. Periksa kembali field yang disorot.', 'error');
+return;
+}
+}
+await doSubmitFinal();
+},
+function() { showToast('⚠️ Pengiriman dibatalkan.', 'info'); }
+);
 }
 async function doSubmitFinal() {
 var dot = document.getElementById('pr-status-dot');
@@ -1122,15 +1338,18 @@ localStorage.setItem(STORAGE_PROFILE, JSON.stringify(localData));
 } catch(e) {}
 hideLoading();
 showToast('✅ Data tersimpan & PDF berhasil dibuat!', 'success');
-var msg = '✅ DATA BERHASIL DISIMPAN!\n';
-msg += '👤 Nama: ' + result.nama + '\n';
-msg += '🆔 NISN: ' + result.nisn + '\n';
-msg += '🏫 Kelas: ' + result.kelas + '\n';
-msg += '📋 Record ID: ' + result.record_id + '\n';
-if (result.pdf_url) msg += '\n📄 PDF: ' + result.pdf_url;
-msg += '\nSilakan cek Spreadsheet & Google Drive Anda.';
-setTimeout(function() { alert(msg); clearFormAfterSubmit(); }, 300);
 if (btn) btn.innerHTML = '✅ Terkirim!';
+// ✅ TAMPILKAN MODAL HASIL KIRIM (PENGGANTI ALERT LAMA)
+setTimeout(function() {
+showSuccessResult({
+pdf_url: result.pdf_url || '',
+foto_link: result.foto_link || '',
+nama: result.nama || data.nama_lengkap || '-',
+nisn: result.nisn || data.nisn || '-',
+kelas: result.kelas || data.kelas || '-',
+record_id: result.record_id || '-'
+});
+}, 400);
 } else {
 throw new Error(result.error || 'Gagal menyimpan data');
 }
