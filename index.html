@@ -364,30 +364,6 @@ padding: 0.3rem 0.5rem !important;
 background: white !important;
 }
 }
-/* ✅ MODAL CETAK PDF BERDASARKAN NIS */
-.pr-cetak-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.78);display:none;align-items:center;justify-content:center;z-index:9995;padding:1rem;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.pr-cetak-overlay.show{display:flex;animation:fadeIn 0.3s ease}
-.pr-cetak-modal{background:#fff;border-radius:24px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.35);animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1)}
-.pr-cetak-header{background:linear-gradient(135deg,#dc2626 0%,#ef4444 50%,#f87171 100%);color:white;padding:1.5rem;text-align:center;position:relative;overflow:hidden}
-.pr-cetak-header::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 80% 20%,rgba(255,255,255,0.2) 0%,transparent 50%)}
-.pr-cetak-header .cetak-icon{width:64px;height:64px;margin:0 auto 0.8rem;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;position:relative;z-index:1}
-.pr-cetak-header h3{color:white;font-size:1.25rem;font-weight:800;margin-bottom:0.3rem;position:relative;z-index:1}
-.pr-cetak-header p{font-size:0.88rem;color:rgba(255,255,255,0.92);position:relative;z-index:1}
-.pr-cetak-body{padding:1.5rem}
-.pr-cetak-info{background:linear-gradient(135deg,#fef2f2 0%,#fee2e2 100%);border-left:4px solid #dc2626;padding:0.8rem 1rem;border-radius:10px;margin-bottom:1.2rem;font-size:0.85rem;color:#7f1d1d;font-weight:600;display:flex;gap:0.6rem;align-items:flex-start}
-.pr-cetak-input-wrap{position:relative;margin-bottom:1rem}
-.pr-cetak-input-wrap .cetak-input-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.2rem;color:#dc2626}
-.pr-cetak-input{width:100%;padding:0.9rem 1rem 0.9rem 3rem;border:2px solid #fecaca;border-radius:12px;font-family:inherit;font-size:16px;transition:all 0.2s ease;background:white;-webkit-appearance:none;appearance:none}
-.pr-cetak-input:focus{outline:none;border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,0.15)}
-.pr-cetak-error{background:#fee2e2;border:1px solid #fecaca;border-left:4px solid #ef4444;color:#991b1b;padding:0.7rem 1rem;border-radius:8px;font-size:0.85rem;margin-bottom:1rem;display:none}
-.pr-cetak-error.show{display:block}
-.pr-cetak-actions{display:flex;gap:0.6rem;margin-top:1rem}
-.pr-cetak-btn{flex:1;padding:0.85rem;border-radius:12px;border:none;font-family:inherit;font-weight:700;font-size:0.95rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.2s ease}
-.pr-cetak-btn-primary{background:linear-gradient(135deg,#dc2626 0%,#ef4444 100%);color:white;box-shadow:0 4px 12px rgba(220,38,38,0.25)}
-.pr-cetak-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(220,38,38,0.35)}
-.pr-cetak-btn-primary:disabled{opacity:0.6;cursor:not-allowed;transform:none}
-.pr-cetak-btn-secondary{background:#f1f5f9;color:#475569}
-.pr-cetak-btn-secondary:hover{background:#e2e8f0}
 </style>
 </head>
 <body>
@@ -460,31 +436,7 @@ background: white !important;
 </div>
 </div>
 </div>
-<!-- ✅ MODAL CETAK PDF BERDASARKAN NIS -->
-<div class="pr-cetak-overlay" id="prCetakOverlay">
-<div class="pr-cetak-modal">
-<div class="pr-cetak-header">
-<div class="cetak-icon">🖨️</div>
-<h3>CETAK LAPORAN PDF</h3>
-<p>Masukkan NIS siswa untuk membuka laporan PDF</p>
-</div>
-<div class="pr-cetak-body">
-<div class="pr-cetak-info">
-<span style="font-size:1.2rem">💡</span>
-<div><strong>Petunjuk:</strong> Masukkan NIS siswa yang sudah pernah mengirim data. Sistem akan membuka laporan PDF yang tersimpan di Google Drive.</div>
-</div>
-<div class="pr-cetak-input-wrap">
-<span class="cetak-input-icon">🆔</span>
-<input type="text" class="pr-cetak-input" id="cetakNisInput" placeholder="Masukkan NIS siswa (contoh: 2026001)" autocomplete="off" inputmode="numeric">
-</div>
-<div class="pr-cetak-error" id="cetakError">❌ Data tidak ditemukan.</div>
-<div class="pr-cetak-actions">
-<button type="button" class="pr-cetak-btn pr-cetak-btn-secondary" onclick="closeCetakModal()">❌ Batal</button>
-<button type="button" class="pr-cetak-btn pr-cetak-btn-primary" id="cetakSearchBtn" onclick="cariDanCetakPDF()">🔍 Cari & Buka PDF</button>
-</div>
-</div>
-</div>
-</div>
+
 <div class="pr-loading-overlay" id="pr-loading">
 <div class="pr-spinner"></div>
 <div class="pr-loading-text" id="pr-loading-text">Mengirim data...</div>
@@ -661,7 +613,7 @@ background: white !important;
 </form>
 <div class="pr-action-bar">
 <button type="button" class="pr-btn" onclick="saveLocalOnly()">💾 Simpan Lokal</button>
-<button type="button" class="pr-btn" onclick="openCetakModal()">🖨️ Cetak PDF</button>
+<button type="button" class="pr-btn" onclick="window.print()">🖨️ Cetak</button>
 <button type="button" class="pr-btn" onclick="loadFromLocal()">📂 Muat Data</button>
 <button type="button" class="pr-btn danger" onclick="resetProfileForm()">🔄 Reset</button>
 <button type="button" class="pr-btn webbk-btn" onclick="goToWebBK()">🌐 WebBK</button>
@@ -777,73 +729,6 @@ var overlay = document.getElementById('prPetunjukOverlay');
 if (overlay) {
 overlay.classList.remove('show');
 document.body.style.overflow = '';
-}
-}
-// ✅ FUNGSI MODAL CETAK PDF BERDASARKAN NIS
-function openCetakModal() {
-var overlay = document.getElementById('prCetakOverlay');
-if (overlay) {
-overlay.classList.add('show');
-document.body.style.overflow = 'hidden';
-document.getElementById('cetakNisInput').value = '';
-document.getElementById('cetakError').classList.remove('show');
-setTimeout(function() { document.getElementById('cetakNisInput').focus(); }, 300);
-}
-}
-function closeCetakModal() {
-var overlay = document.getElementById('prCetakOverlay');
-if (overlay) {
-overlay.classList.remove('show');
-document.body.style.overflow = '';
-}
-}
-async function cariDanCetakPDF() {
-var input = document.getElementById('cetakNisInput');
-var errorEl = document.getElementById('cetakError');
-var btn = document.getElementById('cetakSearchBtn');
-var nis = input.value.trim();
-errorEl.classList.remove('show');
-if (!nis) {
-errorEl.textContent = '⚠️ Masukkan NIS siswa terlebih dahulu!';
-errorEl.classList.add('show');
-input.focus();
-return;
-}
-var originalBtnHTML = btn.innerHTML;
-btn.disabled = true;
-btn.innerHTML = '⏳ Mencari...';
-try {
-var payload = { action: 'search_profile', search_by: 'nis', keyword: nis };
-var res = await fetch(BACKEND_URL, {
-method: 'POST',
-body: JSON.stringify(payload),
-headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-redirect: 'follow'
-});
-var result = await res.json();
-if (result.success && result.data) {
-if (result.pdf_url) {
-closeCetakModal();
-setTimeout(function() {
-var nama = result.data.nama_lengkap || 'Siswa';
-var nisn = String(result.data.nisn || '-').replace(/^'+/, '');
-openPdfViewer(result.pdf_url, nama, nisn);
-showToast('✅ PDF berhasil dibuka!', 'success');
-}, 300);
-} else {
-errorEl.innerHTML = '⚠️ <strong>Data ditemukan, tapi PDF belum tersedia.</strong><br>Siswa tersebut belum menyelesaikan pengisian form.';
-errorEl.classList.add('show');
-}
-} else {
-errorEl.textContent = '❌ ' + (result.error || 'Data siswa dengan NIS tersebut tidak ditemukan.');
-errorEl.classList.add('show');
-}
-} catch (err) {
-errorEl.textContent = '❌ Gagal mencari: ' + err.message;
-errorEl.classList.add('show');
-} finally {
-btn.disabled = false;
-btn.innerHTML = originalBtnHTML;
 }
 }
 function goToWebBK() {
@@ -993,20 +878,12 @@ initCheckboxVisual();
 document.getElementById('guruBK9Modal').addEventListener('click', function(e) { if (e.target.id === 'guruBK9Modal') closeGuruBK9Modal(); });
 document.getElementById('guruPasswordInput').addEventListener('keypress', function(e) { if (e.key === 'Enter') loginGuruBK9(); });
 document.getElementById('guruSearchInput').addEventListener('keypress', function(e) { if (e.key === 'Enter') searchProfile(); });
-// ✅ TAMBAHKAN BARIS INI:
-document.getElementById('cetakNisInput').addEventListener('keypress', function(e) { 
-if (e.key === 'Enter') cariDanCetakPDF(); 
-});
 var petunjukOverlay = document.getElementById('prPetunjukOverlay');
 if (petunjukOverlay) {
 petunjukOverlay.addEventListener('click', function(e) {
 if (e.target === petunjukOverlay) closePetunjuk();
 });
 }
-// ✅ TAMBAHKAN BARIS INI:
-document.getElementById('cetakNisInput').addEventListener('keypress', function(e) { 
-if (e.key === 'Enter') cariDanCetakPDF(); 
-});
 var successOverlay = document.getElementById('prSuccessOverlay');
 if (successOverlay) {
 successOverlay.addEventListener('click', function(e) {
@@ -1019,8 +896,6 @@ var pdfOverlay = document.getElementById('pdfViewerOverlay');
 if (pdfOverlay && pdfOverlay.classList.contains('show')) closePdfViewer();
 var petunjukOv = document.getElementById('prPetunjukOverlay');
 if (petunjukOv && petunjukOv.classList.contains('show')) closePetunjuk();
-var cetakOv = document.getElementById('prCetakOverlay');
-if (cetakOv && cetakOv.classList.contains('show')) closeCetakModal();
 var successOv = document.getElementById('prSuccessOverlay');
 if (successOv && successOv.classList.contains('show')) closeSuccessResult();
 }
